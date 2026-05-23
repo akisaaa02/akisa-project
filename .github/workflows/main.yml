@@ -10,16 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-     uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup Python
-     uses: actions/setup-python@v4
-     with:
-       python-version: "3.12"
-
-    - name: Install Flask
-     run: pip install flask
-
-    - name: Check Python file
-     run: python -m py_compile app.py
+      - name: Build Docker image
+        run: docker build -t akisa-app .
